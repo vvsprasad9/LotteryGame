@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottery Game</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #a2c2e8, #84fab0);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2.5em;
+            margin-top: 20px;
+        }
+
+        .lottery-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .box {
+            width: 180px;
+            height: 50px;
+            background: linear-gradient(30deg, #fadb5e, #fae48b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #333;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease-in forwards;
+            opacity: 0;
+        }
+
+        .box:nth-child(odd) {
+            animation-delay: calc(0.1s * var(--index));
+            --index: 0;
+        }
+
+        .box:nth-child(even) {
+            animation-delay: calc(0.1s * var(--index));
+            --index: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .winningBox {
+            background: linear-gradient(45deg, #28a745, #34c759);
+            color: white;
+            animation: winPulse 1s ease-in-out;
+        }
+
+        @keyframes winPulse {
+            0% { transform: scale(1); box-shadow: 0 0 10px #28a745; }
+            50% { transform: scale(1.1); box-shadow: 0 0 20px #28a745; }
+            100% { transform: scale(1); box-shadow: 0 0 10px #28a745; }
+        }
+
+        #lotterySheetContainer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1000px;
+        }
+
+        .highlightedBox {
+            border: 5px solid #ff4d4d;
+            animation: spinHighlight 0.5s linear infinite;
+        }
+
+        @keyframes spinHighlight {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #pick {
+            background: linear-gradient(45deg, #28a745, #34c759);
+            padding: 12px 40px;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 20px;
+        }
+
+        #pick:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #218838, #2ecc71);
+        }
+
+        #pick:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lottery Game</h1>
+    <div class="lottery-container">
+        <div id="lotterySheetContainer"></div>
+        <h2><p id="result"></p></h2>
+        <button id="pick">Pick a number</button>
+    </div>
+    <script src="lottery.js"></script>
+</body>
+</html>
