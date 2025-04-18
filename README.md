@@ -26,11 +26,17 @@ cd your-repo-name
 
 What’s in the Folder:
 LotteryGame/
+
 ├── index.html       // The main game page
+
 ├── script.js        // The brain behind the game
+
 ├── spin.mp3         // Sound for the spinning action
+
 ├── completed.mp3    // Sound for when you win
+
 └── README.md        // This file!
+
 
 
 Get the Audio Files:
